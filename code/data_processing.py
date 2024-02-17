@@ -1,5 +1,40 @@
+from dataclasses import dataclass, field
 import wikipedia
-from typing import List
+from typing import List, Any, Tuple
+from transformers import HfArgumentParser
+
+
+@dataclass
+class Arguments:
+    """
+    Arguments for loading data and saving vector database.
+    """
+
+    wikipedia_title: str = field(
+        metadata={
+            "help": "Wikipedia title name.",
+            "required": True,
+        },
+    )
+
+    output_data_path: str = field(
+        metadata={
+            "help": "Path to the output processed dataset.",
+            "required": True,
+        },
+    )
+
+
+def get_args() -> Tuple[Any, ...]:
+    """
+    Parse command line arguments.
+
+    :return: Arguments
+    """
+
+    parser = HfArgumentParser(Arguments)
+
+    return parser.parse_args_into_dataclasses()
 
 
 def process_data(content: str) -> List[str]:
@@ -33,14 +68,13 @@ def process_data(content: str) -> List[str]:
     return new_chunks
 
 
-def main(title: str, output_dir: str):
-    content = wikipedia.page(title).content
+def main(args: Arguments):
+    content = wikipedia.page(args.wikipedia_title).content
     chunks = process_data(content)
-    with open(output_dir, "w") as f:
+    with open(args.output_data_path, "w") as f:
         f.write("\n".join(chunks))
 
 
 if __name__ == "__main__":
-    title = "List of landmark court decisions in the United States"
-    output_dir = "data/landmark-court-decisions-in-the-US.txt"
-    main(title, output_dir)
+    args = get_args()
+    main(args[0])
