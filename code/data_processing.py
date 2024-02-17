@@ -23,6 +23,7 @@ def process_data(content: str) -> List[str]:
             subsubtitle = line.replace("=", "").strip()
         elif line.startswith("=="):  # new subtitle line
             subtitle = line.replace("=", "").strip()
+            subsubtitle = None
         else:  # concatenate subtitle, subsubtitle, and the chunk
             sequence = "\t".join(
                 [part for part in [subtitle, subsubtitle, line] if part]
