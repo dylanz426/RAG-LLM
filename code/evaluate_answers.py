@@ -1,6 +1,7 @@
 from typing import Any, Tuple, List
 from dataclasses import dataclass, field
 import re
+import pandas as pd
 import torch
 from tqdm import tqdm
 from transformers import HfArgumentParser, T5ForConditionalGeneration, T5Tokenizer
@@ -52,7 +53,7 @@ def scale_score(
     tokenizer: T5Tokenizer,
     premise: List[str],
     hypothesis: List[str],
-) -> List[float]:
+) -> pd.DataFrame:
     """
     Compute the SCALE scores to evaluate the generated answers.
 
@@ -61,13 +62,14 @@ def scale_score(
     :param premise: list of reference sentences
     :param hypothesis: list of target sentences
 
-    :return the score averaged over target sentences
+    :return the dataframe containing scores on target sentences
     """
 
     DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     yes_no_tokens = [tokenizer("Yes").input_ids[0], tokenizer("No").input_ids[0]]
-    h_results = []
+    h_results = {"sentences": [], "scores": []}
     for h in tqdm(hypothesis, total=len(hypothesis)):
+        h_results["sentences"].append(h)
         p_results = []
         for p in tqdm(premise, total=len(premise)):
             prompt = f'{p} Question: Does this imply that "{h}"? Yes or No?'
@@ -80,8 +82,8 @@ def scale_score(
             )
             scores = outputs["scores"][0][0][yes_no_tokens]
             p_results.append(torch.nn.functional.softmax(scores, dim=0)[0].item())
-        h_results.append(max(p_results))
-    return sum(h_results) / len(h_results)
+        h_results["scores"].append(max(p_results))
+    return pd.DataFrame(h_results)
 
 
 def split_text(text: str):
@@ -93,7 +95,15 @@ def split_text(text: str):
     :return list of sentences split from the string
     """
 
-    text = text.replace("\n", "  ").replace("\t", "  ").replace(" v.", " v.s")
+    text = (
+        text.replace("\xa0", " ")
+        .replace("\\n", "\n")
+        .replace("\\t", "\t")
+        .replace("\n", "  ")
+        .replace("\t", "  ")
+        .replace(" v. ", " v.s ")
+        .replace(" U.S. ", " U.S ")
+    )
 
     text = re.sub("\s{2,}", "  ", text)
     text = re.sub(r"\.+", ".", text)
@@ -105,7 +115,7 @@ def split_text(text: str):
         .replace("! ", "!***")
         .replace("  ", "***")
     )
-    return [s.strip() for s in text.split("***") if len(s.strip()) > 0]
+    return [s.strip() for s in text.split("***") if len(s.strip()) > 5]
 
 
 def main(args: Arguments):
@@ -115,14 +125,9 @@ def main(args: Arguments):
     model = T5ForConditionalGeneration.from_pretrained(
         args.model_path, device_map="auto"
     )
-    results = {}
-    results["SCALE_precision"] = scale_score(
-        model, tokenizer, true_sentences, generated_sentences
-    )
-    results["SCALE_recall"] = scale_score(
-        model, tokenizer, generated_sentences, true_sentences
-    )
+    results = scale_score(model, tokenizer, generated_sentences, true_sentences)
     print(results)
+    print(sum(results["scores"]) / len(results["scores"]))
 
 
 if __name__ == "__main__":
