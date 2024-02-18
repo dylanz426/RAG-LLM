@@ -116,10 +116,10 @@ def main(args: Arguments):
         args.model_path, device_map="auto"
     )
     results = {}
-    results["precision"] = scale_score(
+    results["SCALE_precision"] = scale_score(
         model, tokenizer, true_sentences, generated_sentences
     )
-    results["recall"] = scale_score(
+    results["SCALE_recall"] = scale_score(
         model, tokenizer, generated_sentences, true_sentences
     )
     print(results)
