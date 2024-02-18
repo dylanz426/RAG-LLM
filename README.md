@@ -26,7 +26,7 @@ python code/save_vector_database.py \
 ```
 
 ## Answer Generation
-Given a question, we vectorize it using the same `sentence transformer` then compare the semantic similarities with the vectors in the database. Based on the semantic similarity scores, we select the top k most relevant chunks from the database. These top k chunks are paired up with the question and reranked by a large reranking model `BAAI/bge-reranker-large`. The chunks with reranker scores higher than a threshold are used as the context for the question. Then we can call the OpenAI API to generate an answer given the question and context. This whole process can be run by
+Given a question, we vectorize it using the same `sentence transformer` then compare the semantic similarities with the vectors in the database. Based on the semantic similarity scores, the top k most relevant chunks are retrieved from the database. These top k chunks are then paired up with the question and reranked by a large reranking model `BAAI/bge-reranker-large`. The chunks with reranker scores higher than a threshold are used as the context for the question. Then we can call the OpenAI API to generate an answer given the question and retrieved context. This whole process can be run by
 ```
 python code/generate_answers.py \
     --question "What was the recent scotus ruling on affirmative action?" \
