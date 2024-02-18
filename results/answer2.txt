@@ -1,0 +1,23 @@
+question:
+Can police in the USA search my house? What court cases determine this?
+
+context:
+Georgia v. Randolph, 547 U.S. 103 (2006) Police cannot conduct a warrantless search in a home where one occupant consents and the other objects.
+Katz v. United States, 389 U.S. 347 (1967) The Fourth Amendment's ban on unreasonable searches and seizures applies to all places where an individual has a "reasonable expectation of privacy."
+Carpenter v. United States, 585 U.S. ___ (2018) Government acquisition of cell-site records is a Fourth Amendment search, and, thus, generally requires a warrant.
+Riley v. California, 573 U.S. 373 (2014) Police must obtain a warrant in order to search digital information on a cell phone seized from an individual who has been arrested.
+Schmerber v. California, 384 U.S. 757 (1966) The application of the Fourth Amendment's protection against warrantless searches and the Fifth Amendment privilege against self incrimination to searches that intrude into the human body means that police may not conduct warrantless blood testing on suspects absent an emergency that justifies acting without a warrant.
+New Jersey v. T. L. O., 469 U.S. 325 (1985) The Fourth Amendment's ban on unreasonable searches applies to those conducted by public school officials as well as those conducted by law enforcement personnel, but public school officials can use the less strict standard of reasonable suspicion instead of probable cause.
+O'Connor v. Ortega, 480 U.S. 709 (1987) In the absence of reasonable workplace policy to the contrary, the Fourth Amendment applies to searches of public employees, their belongings or workplaces by their superiors if done with reasonable suspicion for administrative reasons.
+United States v. United States District Court for the Eastern District of Michigan, 407 U.S. 297 (1972) Government officials must obtain a warrant before beginning electronic surveillance even if domestic security issues are involved. The "inherent vagueness of the domestic security concept" and the potential for abusing it to quell political dissent make the Fourth Amendment's protections especially important when the government spies on its own citizens.
+
+answer:
+In the USA, police generally cannot search your house without a warrant, except in certain specific circumstances. The Fourth Amendment to the U.S. Constitution protects individuals from unreasonable searches and seizures. Several court cases have helped determine the boundaries of police searches:
+
+1. Georgia v. Randolph (2006): Police cannot conduct a warrantless search in a home where one occupant consents and the other objects.
+2. Katz v. United States (1967): The Fourth Amendment's ban on unreasonable searches and seizures applies to all places where an individual has a "reasonable expectation of privacy."
+3. Carpenter v. United States (2018): Government acquisition of cell-site records is considered a Fourth Amendment search and generally requires a warrant.
+4. Riley v. California (2014): Police must obtain a warrant to search digital information on a cell phone seized from an individual who has been arrested.
+5. Schmerber v. California (1966): Police may not conduct warrantless blood testing on suspects without a warrant unless there is an emergency that justifies acting without one.
+
+These cases, among others, have helped establish the legal framework for when police can search a person's house or property in the USA.
