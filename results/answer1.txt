@@ -2,23 +2,26 @@ question:
 What are the most important supreme court cases to do with gun rights in the USA?
 
 context:
-McDonald v. City of Chicago, 561 U.S. 742 (2010) The individual right to keep and bear arms for self-defense is incorporated against the states through the Fourteenth Amendment's Due Process Clause or Privileges or Immunities Clause.
-United States v. Miller, 307 U.S. 174 (1939) The federal government and the states can limit access to all weapons that do not have "some reasonable relationship to the preservation or efficiency of a well regulated militia."
-Printz v. United States, 521 U.S. 898 (1997) The interim provision of the Brady Handgun Violence Prevention Act that requires state and local officials to conduct background checks on firearm purchasers violates the Tenth Amendment.
-District of Columbia v. Heller, 554 U.S. 570 (2008) The Second Amendment protects an individual right to possess a firearm unconnected with service in a militia and to use it for traditionally lawful purposes such as self-defense within the home.
-New York State Rifle & Pistol Association, Inc. v. Bruen, 597 U.S. ___ (2022) The Second Amendment protects an individual's right to carry a handgun for self-defense in public, outside the home; firearms regulations challenged on constitutional grounds must be evaluated against the "history and tradition" of such laws in the U.S.
 Anderson v. Liberty Lobby, Inc. 477 U.S. 242 (1986) Set the standard for what parties must establish in evidence to be granted summary judgement in federal civil cases and how courts should evaluate those motions. Since such motions are extremely common, Anderson has become the most-cited Supreme Court case.
+District of Columbia v. Heller, 554 U.S. 570 (2008) The Second Amendment protects an individual right to possess a firearm unconnected with service in a militia and to use it for traditionally lawful purposes such as self-defense within the home.
+Missouri v. Holland, 252 U.S. 416 (1920) Treaties made by the federal government are supreme over any concerns brought by the states about such treaties interfering with any states' rights derived from the Tenth Amendment.
+Printz v. United States, 521 U.S. 898 (1997) The interim provision of the Brady Handgun Violence Prevention Act that requires state and local officials to conduct background checks on firearm purchasers violates the Tenth Amendment.
 United States v. Cruikshank, 92 U.S. 542 (1876) The Second Amendment has no purpose other than to restrict the powers of the federal government. The right to keep and bear arms for a lawful purpose is not a right granted by the Constitution or dependent upon the Constitution for its existence. (overruled by District of Columbia v. Heller (2008) and McDonald v. City of Chicago (2010)).
+United States v. Miller, 307 U.S. 174 (1939) The federal government and the states can limit access to all weapons that do not have "some reasonable relationship to the preservation or efficiency of a well regulated militia."
+McDonald v. City of Chicago, 561 U.S. 742 (2010) The individual right to keep and bear arms for self-defense is incorporated against the states through the Fourteenth Amendment's Due Process Clause or Privileges or Immunities Clause.
+Swift v. Tyson, 41 U.S. 1 (1842) Federal courts hearing cases were bound to follow the statutory laws of states that they were asked to enforce, but not the state's common law. The goal was to encourage the development of a federal common law; since that did not occur, the decision was overruled almost a century later by Erie Railroad Co. v. Tompkins.
+List of overruled United States Supreme Court decisions
+New York State Rifle & Pistol Association, Inc. v. Bruen, 597 U.S. ___ (2022) The Second Amendment protects an individual's right to carry a handgun for self-defense in public, outside the home; firearms regulations challenged on constitutional grounds must be evaluated against the "history and tradition" of such laws in the U.S.
 
 answer:
-Some of the most important Supreme Court cases to do with gun rights in the USA include:
+Some of the most important Supreme Court cases related to gun rights in the USA include:
 
-1. District of Columbia v. Heller (2008): This case established that the Second Amendment protects an individual's right to possess a firearm unconnected with service in a militia and to use it for traditionally lawful purposes such as self-defense within the home.
+1. District of Columbia v. Heller (2008): This case established that the Second Amendment protects an individual's right to possess a firearm for self-defense within the home, separate from militia service.
 
-2. McDonald v. City of Chicago (2010): This case incorporated the individual right to keep and bear arms for self-defense against the states through the Fourteenth Amendment's Due Process Clause or Privileges or Immunities Clause.
+2. McDonald v. City of Chicago (2010): This case extended the individual right to keep and bear arms for self-defense to the states through the Fourteenth Amendment.
 
-3. United States v. Miller (1939): This case determined that the federal government and the states can limit access to all weapons that do not have "some reasonable relationship to the preservation or efficiency of a well regulated militia."
+3. United States v. Miller (1939): This case determined that the Second Amendment does not protect all types of weapons, only those with a reasonable relationship to a well-regulated militia.
 
-4. New York State Rifle & Pistol Association, Inc. v. Bruen (2022): This recent case clarified that the Second Amendment protects an individual's right to carry a handgun for self-defense in public, outside the home, and that firearms regulations challenged on constitutional grounds must be evaluated against the "history and tradition" of such laws in the U.S.
+4. New York State Rifle & Pistol Association, Inc. v. Bruen (2022): This recent case clarified that the Second Amendment protects an individual's right to carry a handgun for self-defense in public, not just within the home.
 
 These cases have played significant roles in shaping the interpretation and application of gun rights in the United States.
