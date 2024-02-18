@@ -7,7 +7,7 @@ from transformers import HfArgumentParser
 @dataclass
 class Arguments:
     """
-    Arguments for processing raw data.
+    Arguments for loading data and saving vector database.
     """
 
     wikipedia_title: str = field(

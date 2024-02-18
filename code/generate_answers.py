@@ -15,7 +15,7 @@ from transformers import (
 @dataclass
 class Arguments:
     """
-    Arguments for generating answer based on question and database.
+    Arguments for loading data and saving vector database.
     """
 
     question: str = field(
@@ -54,7 +54,7 @@ class Arguments:
         },
     )
 
-    reranker_path: str = field(
+    rerank_path: str = field(
         default="BAAI/bge-reranker-large",
         metadata={
             "help": "Name of the rerank model.",
@@ -140,24 +140,23 @@ def get_prompt(question: str, df_chunks: pd.DataFrame, thre: float) -> str:
     return f"question:\n{question}\n\ncontext:\n{context}\n\nanswer:"
 
 
-def calculate_rerank(reranker_path: str, pairs: List[Tuple[str, str]]):
+def calculate_rerank(rerank_path: str, pairs: List[Tuple[str, str]]):
     """
     Calculate the rerank scores on the top k chunks.
 
-    :param reranker_path: name or path of the rerank model.
+    :param rerank_path: name or path of the rerank model.
     :param pairs: list of question and chunk pairs
 
     :return the normalized rerank scores for each chunk
     """
-    DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    rerank_tokenizer = AutoTokenizer.from_pretrained(reranker_path)
-    rerank_model = AutoModelForSequenceClassification.from_pretrained(
-        reranker_path, device_map="auto"
-    )
+
+    rerank_tokenizer = AutoTokenizer.from_pretrained(rerank_path)
+    rerank_model = AutoModelForSequenceClassification.from_pretrained(rerank_path)
+    softmax = torch.nn.Softmax()
     with torch.no_grad():
         inputs = rerank_tokenizer(
             pairs, padding=True, truncation=True, max_length=512, return_tensors="pt"
-        ).to(DEVICE)
+        )
         scores = (
             rerank_model(**inputs, return_dict=True)
             .logits.view(
@@ -165,7 +164,7 @@ def calculate_rerank(reranker_path: str, pairs: List[Tuple[str, str]]):
             )
             .float()
         )
-        return torch.nn.functional.softmax(scores, dim=0).tolist()
+        return softmax(scores).tolist()
 
 
 def process_results(preds: List[Dict[str, Any]], chunks: List[str]) -> pd.DataFrame:
@@ -200,9 +199,9 @@ def main(args: Arguments):
     )
     df = process_results(preds_dict[0], chunks)
     # rerank the top k chunks
-    if len(args.reranker_path) > 0:
+    if len(args.rerank_path) > 0:
         pairs = [(args.question, chunk) for chunk in df["chunks"]]
-        df["scores"] = calculate_rerank(args.reranker_path, pairs)
+        df["scores"] = calculate_rerank(args.rerank_path, pairs)
         df = df.sort_values(by=["scores"], ascending=False)
     # get the prompt by concatenating question and chunks
     prompt = get_prompt(args.question, df, args.thre)
