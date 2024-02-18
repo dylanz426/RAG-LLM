@@ -26,7 +26,7 @@ class Arguments:
     )
 
     sent_trans: str = field(
-        default="all-mpnet-base-v2",
+        default="multi-qa-mpnet-base-cos-v1",
         metadata={
             "help": "Name of the sentence transformer model that is used to encode chunks.",
             "required": False,
