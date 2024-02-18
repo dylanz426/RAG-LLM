@@ -63,7 +63,7 @@ class Arguments:
     )
 
     top_k: int = field(
-        default=10,
+        default=20,
         metadata={
             "help": "The top k chunks based on the semantic matching scores.",
             "required": False,
